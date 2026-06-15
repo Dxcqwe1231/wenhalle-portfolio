@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wenhalle Dexie R. Lao | Portfolio</title>
+  <meta name="description" content="Portfolio of Wenhalle Dexie R. Lao — Junior Web Developer and Laravel Developer based in Cebu, Philippines.">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div class="hero-brand">
+          <div class="avatar-trigger">
+            <button class="avatar-display-button" type="button" aria-haspopup="true" aria-expanded="false">
+              <img src="images/pink.jpg" alt="Wenhalle Dexie R. Lao" class="hero-avatar">
+            </button>
+            <div class="avatar-actions">
+              <a class="avatar-action avatar-action-view" href="images/pink.jpg" target="_blank" rel="noopener noreferrer">View avatar</a>
+              <label class="avatar-action avatar-action-upload" for="avatar-upload-input">Upload new avatar</label>
+            </div>
+          </div>
+          <div>
+            <h1>Wenhalle Dexie R. Lao</h1>
+            <p class="subtitle">Bachelor of Science in Information Technology</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <nav class="page-nav" aria-label="Primary navigation">
+            <a href="#about">About Me</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#hire">Hire Me</a>
+          </nav>
+          <div class="header-email">
+            <a href="mailto:wenhallerepuesto25@gmail.com">wenhallerepuesto25@gmail.com</a>
+          </div>
+        </div>
+        <input id="avatar-upload-input" type="file" accept="image/*" hidden>
+      </div>
+    </div>
+  </header>
+  <div class="page-container">
+    <section class="welcome-section section card">
+      <div class="welcome-orbs" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+        <span class="orb orb-4"></span>
+        <span class="orb orb-5"></span>
+      </div>
+      <div class="welcome-avatar">
+        <img src="images/pink.jpg" alt="Wenhalle Dexie R. Lao" class="welcome-avatar-img">
+      </div>
+      <div class="welcome-copy">
+        <p class="welcome-eyebrow">BSIT GRADUATE · AVAILABLE FOR HIRE</p>
+        <h1>This is where I bring ideas to life.</h1>
+        <p class="welcome-text">Passionate about building clean web experiences with PHP and Laravel.</p>
+      </div>
+    </section>
+    <main>
+      <section id="about" class="section card">
+        <h2>Personal Information</h2>
+        <div class="grid-two">
+          <div>
+            <p><strong>Name:</strong> Wenhalle Dexie R. Lao</p>
+            <p><strong>Position Desired:</strong> Junior Web Developer / Laravel Developer</p>
+            <p><strong>Address:</strong> Naalad City of Naga, Cebu</p>
+            <p><strong>Mobile No.:</strong> +639272006902</p>
+          </div>
+          <div>
+            <p><strong>Age:</strong> 23 years old</p>
+            <p><strong>Birthday:</strong> February 25, 2003</p>
+            <p><strong>Civil Status:</strong> Single</p>
+            <p><strong>Citizenship:</strong> Filipino</p>
+              <p><strong>Religion:</strong> Roman Catholic</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section card">
+        <h2>Education</h2>
+        <div class="education-list">
+          <div>
+            <p class="education-level">College</p>
+            <p><u>Professional Academy of the Philippines</u> — Bachelor of Science in Information Technology, Graduated</p>
+          </div>
+          <div>
+            <p class="education-level">Senior High School</p>
+            <p><u>Professional Academy of the Philippines</u> — 2019–2021</p>
+          </div>
+          <div>
+            <p class="education-level">Secondary School</p>
+            <p>Naga National High School — 2015–2018</p>
+          </div>
+          <div>
+            <p class="education-level">Primary School</p>
+            <p>Naalad Elementary School — 2009–2014</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section card">
+        <h2>Skills</h2>
+        <p class="section-description">Technical skills with a strong foundation in Laravel and PHP development.</p>
+        <ul class="skill-list">
+          <li>JavaScript</li>
+          <li>Responsive Web Design</li>
+          <li>Setting up Laravel working environment</li>
+          <li>PHP artisan commands</li>
+          <li>Routing and request methods</li>
+          <li>Database migration</li>
+          <li>Eloquent ORM basics</li>
+        </ul>
+      </section>
+
+      <section id="hire" class="section card hire-card">
+        <h2>Hire Me</h2>
+        <p class="section-description">I am available for opportunities and ready to contribute my skills in IT and Laravel development.</p>
+        <p><strong>Contact:</strong> +639272006902</p>
+        <p class="hire-email"><strong>Email:</strong> <a href="mailto:wenhallerepuesto25@gmail.com">wenhallerepuesto25@gmail.com</a></p>
+        <p><strong>Availability:</strong> Open to any position.</p>
+        <div class="hire-buttons">
+          <button class="hire-button" id="open-proposal-form" type="button">Offer a business proposal</button>
+          <button class="hire-button convert-pdf-button" id="convert-pdf-button" type="button">Convert to PDF</button>
+        </div>
+      </section>
+
+      <section id="references" class="section card">
+        <h2>Character References</h2>
+        <div class="reference-list">
+          <div>
+            <p class="reference-name">Mr. Herculano C. Omambac</p>
+            <p>Brgy. Captain, Naalad City of Naga, Cebu</p>
+          </div>
+          <div>
+            <p class="reference-name">Mr. Valdemar Chiong</p>
+            <p>Mayor, City of Naga, Cebu</p>
+          </div>
+          <div>
+            <p class="reference-name">Brian Kent Repuesto</p>
+            <p>Mentor</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Wenhalle Dexie R. Lao</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+      </nav>
+      <p class="footer-note"><a href="mailto:wenhallerepuesto25@gmail.com">wenhallerepuesto25@gmail.com</a></p>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <div class="proposal-modal" id="proposal-modal" aria-hidden="true">
+    <div class="proposal-panel" role="dialog" aria-modal="true" aria-labelledby="proposal-title">
+      <button type="button" class="proposal-close" id="proposal-close" aria-label="Close proposal form">×</button>
+      <h3 id="proposal-title">Send a Business Proposal</h3>
+      <p class="proposal-note">Fill in your details and send the proposal directly to my email.</p>
+      <p class="proposal-status" id="proposal-status" aria-live="polite"></p>
+      <form class="proposal-form" id="proposal-form">
+        <label>
+          Your Name
+          <input type="text" id="proposal-name" name="name" required placeholder="Your full name">
+        </label>
+        <label>
+          Your Email
+          <input type="email" id="proposal-email" name="email" required placeholder="you@example.com">
+        </label>
+        <label>
+          Subject / Proposal
+          <input type="text" id="proposal-subject" name="subject" required placeholder="Project or offer summary">
+        </label>
+        <label>
+          Message
+          <textarea id="proposal-message" name="message" required placeholder="Tell me more about your offer"></textarea>
+        </label>
+        <div class="proposal-actions">
+          <button type="button" class="proposal-cancel" id="proposal-cancel">Cancel</button>
+          <button type="submit" class="proposal-send" aria-label="Send proposal">✉</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    const avatarImgs = document.querySelectorAll('.hero-avatar, .welcome-avatar-img');
+    const avatarViewLink = document.querySelector('.avatar-action-view');
+    const avatarDisplayButton = document.querySelector('.avatar-display-button');
+    const avatarTrigger = document.querySelector('.avatar-trigger');
+    const avatarInput = document.getElementById('avatar-upload-input');
+    const AVATAR_KEY = 'portfolioAvatarDataURL';
+
+    const proposalModal = document.getElementById('proposal-modal');
+    const openProposalButton = document.getElementById('open-proposal-form');
+    const closeProposalButtons = document.querySelectorAll('#proposal-close, #proposal-cancel');
+    const proposalForm = document.getElementById('proposal-form');
+    const proposalStatus = document.getElementById('proposal-status');
+
+    function setAvatar(source) {
+      avatarImgs.forEach((img) => {
+        img.src = source;
+      });
+      avatarViewLink.href = source;
+      localStorage.setItem(AVATAR_KEY, source);
+    }
+
+    function loadAvatar() {
+      const saved = localStorage.getItem(AVATAR_KEY);
+      if (saved) {
+        avatarImgs.forEach((img) => {
+          img.src = saved;
+        });
+        avatarViewLink.href = saved;
+      }
+    }
+
+    function showProposalStatus(message, type) {
+      proposalStatus.textContent = message;
+      proposalStatus.className = `proposal-status ${type}`;
+    }
+
+    function clearProposalStatus() {
+      proposalStatus.textContent = '';
+      proposalStatus.className = 'proposal-status';
+    }
+
+    function openProposalModal() {
+      clearProposalStatus();
+      proposalModal.classList.add('open');
+      proposalModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeProposalModal() {
+      proposalModal.classList.remove('open');
+      proposalModal.setAttribute('aria-hidden', 'true');
+      clearProposalStatus();
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+      });
+    });
+
+    openProposalButton.addEventListener('click', openProposalModal);
+    closeProposalButtons.forEach((button) => button.addEventListener('click', closeProposalModal));
+
+    proposalModal.addEventListener('click', (event) => {
+      if (event.target === proposalModal) {
+        closeProposalModal();
+      }
+    });
+
+    proposalForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('proposal-name').value.trim();
+      const email = document.getElementById('proposal-email').value.trim();
+      const subject = document.getElementById('proposal-subject').value.trim();
+      const message = document.getElementById('proposal-message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showProposalStatus('Please complete all fields before sending.', 'error');
+        return;
+      }
+
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      const mailto = `mailto:wenhallerepuesto25@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      showProposalStatus('Proposal ready. Your email client will open to send it.', 'success');
+      setTimeout(() => {
+        closeProposalModal();
+      }, 2200);
+      window.location.href = mailto;
+    });
+
+    avatarDisplayButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = avatarTrigger.classList.toggle('open');
+      avatarDisplayButton.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!avatarTrigger.contains(event.target)) {
+        avatarTrigger.classList.remove('open');
+        avatarDisplayButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    avatarInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setAvatar(e.target.result);
+        avatarTrigger.classList.remove('open');
+        avatarDisplayButton.setAttribute('aria-expanded', 'false');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    const convertBtn = document.getElementById('convert-pdf-button');
+
+    async function generateSinglePagePDF() {
+      try {
+        convertBtn.disabled = true;
+        convertBtn.textContent = 'Generating PDF...';
+
+        const sectionSelectors = ['#about', '#education', '#skills', '#hire', '#references'];
+        const sections = sectionSelectors
+          .map((selector) => document.querySelector(selector))
+          .filter(Boolean);
+
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({ unit: 'px', format: 'legal' });
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+
+        for (let index = 0; index < sections.length; index += 1) {
+          const section = sections[index];
+          const clone = section.cloneNode(true);
+          clone.querySelectorAll('button').forEach((btn) => btn.remove());
+          clone.querySelectorAll('.proposal-actions, .avatar-actions, .proposal-status').forEach((node) => node.remove());
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'pdf-container';
+          wrapper.style.background = '#ffffff';
+          wrapper.style.padding = '20px';
+          wrapper.style.width = `${pageWidth}px`;
+          wrapper.style.minHeight = `${pageHeight}px`;
+          wrapper.style.margin = '0 auto';
+          wrapper.style.boxSizing = 'border-box';
+
+          const pdfStyles = document.createElement('style');
+          pdfStyles.textContent = `
+            .pdf-container { background: #ffffff !important; }
+            .pdf-container h2 { margin-top: 0 !important; }
+            .pdf-container button { display: none !important; }
+            .pdf-container .page-nav { display: none !important; }
+            .pdf-container .welcome-avatar, .pdf-container .avatar-trigger, .pdf-container .proposal-modal { display: none !important; }
+          `;
+          wrapper.appendChild(pdfStyles);
+          wrapper.appendChild(clone);
+
+          wrapper.style.position = 'relative';
+          wrapper.style.left = '-9999px';
+          document.body.appendChild(wrapper);
+
+          const canvas = await html2canvas(wrapper, { scale: 2, useCORS: true, allowTaint: true });
+          document.body.removeChild(wrapper);
+
+          const imgData = canvas.toDataURL('image/png');
+          const scale = Math.min(pageWidth / canvas.width, pageHeight / canvas.height);
+          const imgWidth = canvas.width * scale;
+          const imgHeight = canvas.height * scale;
+          const xOffset = (pageWidth - imgWidth) / 2;
+          const yOffset = (pageHeight - imgHeight) / 2;
+
+          if (index > 0) {
+            pdf.addPage();
+          }
+          pdf.addImage(imgData, 'PNG', xOffset, yOffset, imgWidth, imgHeight);
+        }
+
+        pdf.save('portfolio.pdf');
+      } catch (err) {
+        console.error('PDF generation failed', err);
+        alert('PDF generation failed. See console for details.');
+      } finally {
+        convertBtn.disabled = false;
+        convertBtn.textContent = 'Convert to PDF';
+      }
+    }
+
+    if (convertBtn) {
+      convertBtn.addEventListener('click', generateSinglePagePDF);
+    }
+
+    loadAvatar();
+  </script>
+</body>
+</html>

@@ -157,6 +157,13 @@
       <p class="footer-note"><a href="mailto:wenhallerepuesto25@gmail.com">wenhallerepuesto25@gmail.com</a></p>
     </div>
   </footer>
+  <div class="success-toast" id="success-toast" role="status" aria-live="polite">
+    <span class="success-toast-icon">✓</span>
+    <div>
+      <p class="success-toast-title">Proposal Sent!</p>
+      <p class="success-toast-sub">Your message has been delivered to my inbox.</p>
+    </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <div class="proposal-modal" id="proposal-modal" aria-hidden="true">
@@ -241,7 +248,13 @@
       }
     });
 
-    proposalForm.addEventListener('submit', (event) => {
+    function showSuccessToast() {
+      const toast = document.getElementById('success-toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4500);
+    }
+
+    proposalForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const name = document.getElementById('proposal-name').value.trim();
       const email = document.getElementById('proposal-email').value.trim();
@@ -253,13 +266,37 @@
         return;
       }
 
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-      const mailto = `mailto:wenhallerepuesto25@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-      showProposalStatus('Proposal ready. Your email client will open to send it.', 'success');
-      setTimeout(() => {
-        closeProposalModal();
-      }, 2200);
-      window.location.href = mailto;
+      const sendBtn = proposalForm.querySelector('.proposal-send');
+      sendBtn.disabled = true;
+      sendBtn.textContent = '…';
+      clearProposalStatus();
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: 'eea97d0d-245b-4048-838e-7256c7a6bdb0',
+            name,
+            email,
+            subject: `Portfolio Proposal: ${subject}`,
+            message,
+          }),
+        });
+        const result = await response.json();
+        if (result.success) {
+          proposalForm.reset();
+          closeProposalModal();
+          showSuccessToast();
+        } else {
+          showProposalStatus('Something went wrong. Please try again.', 'error');
+        }
+      } catch {
+        showProposalStatus('Failed to send. Please check your internet connection.', 'error');
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = '✉';
+      }
     });
 
     avatarDisplayButton.addEventListener('click', (event) => {

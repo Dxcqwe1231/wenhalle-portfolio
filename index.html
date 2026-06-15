@@ -19,15 +19,6 @@
             </button>
             <div class="avatar-actions">
               <a class="avatar-action avatar-action-view" href="images/pink.jpg" target="_blank" rel="noopener noreferrer">View avatar</a>
-              <div class="avatar-admin">
-                <label class="avatar-action avatar-action-upload" for="avatar-upload-input">Upload new avatar</label>
-                <input type="password" id="admin-token-input" class="avatar-token-input" placeholder="GitHub token (ghp_…)" autocomplete="off" spellcheck="false">
-                <div class="avatar-admin-buttons">
-                  <button type="button" class="avatar-action avatar-token-save" id="admin-token-save">Save token</button>
-                  <button type="button" class="avatar-action avatar-admin-logout" id="admin-logout">Exit admin</button>
-                </div>
-                <p class="avatar-admin-note" id="admin-status" aria-live="polite"></p>
-              </div>
             </div>
           </div>
           <div>
@@ -46,7 +37,6 @@
             <a href="mailto:wenhallerepuesto25@gmail.com">wenhallerepuesto25@gmail.com</a>
           </div>
         </div>
-        <input id="avatar-upload-input" type="file" accept="image/*" hidden>
       </div>
     </div>
   </header>
@@ -200,103 +190,14 @@
     </div>
   </div>
   <script>
-    const avatarImgs = document.querySelectorAll('.hero-avatar, .welcome-avatar-img');
-    const avatarViewLink = document.querySelector('.avatar-action-view');
     const avatarDisplayButton = document.querySelector('.avatar-display-button');
     const avatarTrigger = document.querySelector('.avatar-trigger');
-    const avatarInput = document.getElementById('avatar-upload-input');
-
-    const ADMIN_FLAG = 'portfolioAdmin';
-    const TOKEN_KEY = 'portfolioGitHubToken';
-    const GH_OWNER = 'Dxcqwe1231';
-    const GH_REPO = 'wenhalle-portfolio';
-    const GH_PATH = 'images/pink.jpg';
-    const GH_BRANCH = 'main';
-
-    const tokenInput = document.getElementById('admin-token-input');
-    const tokenSaveButton = document.getElementById('admin-token-save');
-    const adminLogoutButton = document.getElementById('admin-logout');
-    const adminStatus = document.getElementById('admin-status');
 
     const proposalModal = document.getElementById('proposal-modal');
     const openProposalButton = document.getElementById('open-proposal-form');
     const closeProposalButtons = document.querySelectorAll('#proposal-close, #proposal-cancel');
     const proposalForm = document.getElementById('proposal-form');
     const proposalStatus = document.getElementById('proposal-status');
-
-    function previewAvatar(source) {
-      avatarImgs.forEach((img) => {
-        img.src = source;
-      });
-      avatarViewLink.href = source;
-    }
-
-    function setAdminStatus(message) {
-      if (adminStatus) adminStatus.textContent = message;
-    }
-
-    function isAdmin() {
-      return document.body.classList.contains('is-admin');
-    }
-
-    function initAdminMode() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('admin')) {
-        if (params.get('admin') === '1') {
-          localStorage.setItem(ADMIN_FLAG, '1');
-        } else {
-          localStorage.removeItem(ADMIN_FLAG);
-          localStorage.removeItem(TOKEN_KEY);
-        }
-        params.delete('admin');
-        const query = params.toString();
-        const clean = window.location.pathname + (query ? `?${query}` : '') + window.location.hash;
-        window.history.replaceState(null, '', clean);
-      }
-
-      if (localStorage.getItem(ADMIN_FLAG) === '1') {
-        document.body.classList.add('is-admin');
-        setAdminStatus(localStorage.getItem(TOKEN_KEY) ? 'Token saved. Ready to upload.' : 'Enter your GitHub token to enable uploads.');
-      }
-    }
-
-    async function commitAvatar(base64Content, token) {
-      const apiBase = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`;
-      const headers = {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-      };
-
-      let sha;
-      const getRes = await fetch(`${apiBase}?ref=${GH_BRANCH}`, { headers });
-      if (getRes.ok) {
-        const info = await getRes.json();
-        sha = info.sha;
-      } else if (getRes.status === 401) {
-        throw new Error('Invalid token (401).');
-      } else if (getRes.status !== 404) {
-        throw new Error(`Could not read existing file (${getRes.status}).`);
-      }
-
-      const body = {
-        message: 'Update avatar via admin upload',
-        content: base64Content,
-        branch: GH_BRANCH,
-      };
-      if (sha) body.sha = sha;
-
-      const putRes = await fetch(apiBase, {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify(body),
-      });
-      if (!putRes.ok) {
-        const text = await putRes.text();
-        throw new Error(`${putRes.status}: ${text.slice(0, 120)}`);
-      }
-      return putRes.json();
-    }
 
     function showProposalStatus(message, type) {
       proposalStatus.textContent = message;
@@ -374,61 +275,6 @@
       }
     });
 
-    avatarInput.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      event.target.value = '';
-      if (!file) return;
-      if (!file.type.startsWith('image/')) return;
-      if (!isAdmin()) return;
-
-      const token = localStorage.getItem(TOKEN_KEY);
-      if (!token) {
-        setAdminStatus('Save your GitHub token first.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        const dataUrl = e.target.result;
-        previewAvatar(dataUrl);
-        avatarTrigger.classList.remove('open');
-        avatarDisplayButton.setAttribute('aria-expanded', 'false');
-
-        setAdminStatus('Uploading to GitHub…');
-        try {
-          await commitAvatar(dataUrl.split(',')[1], token);
-          setAdminStatus('Uploaded! Live site updates in ~1 min.');
-        } catch (err) {
-          console.error('Avatar upload failed', err);
-          setAdminStatus(`Upload failed — ${err.message}`);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
-
-    if (tokenSaveButton) {
-      tokenSaveButton.addEventListener('click', () => {
-        const value = tokenInput.value.trim();
-        if (!value) {
-          setAdminStatus('Enter a token first.');
-          return;
-        }
-        localStorage.setItem(TOKEN_KEY, value);
-        tokenInput.value = '';
-        setAdminStatus('Token saved on this device.');
-      });
-    }
-
-    if (adminLogoutButton) {
-      adminLogoutButton.addEventListener('click', () => {
-        localStorage.removeItem(ADMIN_FLAG);
-        localStorage.removeItem(TOKEN_KEY);
-        document.body.classList.remove('is-admin');
-        avatarTrigger.classList.remove('open');
-        avatarDisplayButton.setAttribute('aria-expanded', 'false');
-      });
-    }
-
     const convertBtn = document.getElementById('convert-pdf-button');
 
     async function generateSinglePagePDF() {
@@ -505,8 +351,6 @@
     if (convertBtn) {
       convertBtn.addEventListener('click', generateSinglePagePDF);
     }
-
-    initAdminMode();
   </script>
 </body>
 </html>

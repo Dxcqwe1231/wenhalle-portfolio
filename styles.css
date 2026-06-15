@@ -358,7 +358,7 @@ main {
   border-radius: 16px;
   box-shadow: 0 14px 30px rgba(49, 47, 52, 0.08);
   padding: 10px;
-  min-width: 240px;
+  min-width: 180px;
   z-index: 10;
 }
 
@@ -396,48 +396,6 @@ main {
   font-size: 0.9rem;
   color: var(--muted);
   text-align: center;
-}
-
-.avatar-admin {
-  display: none;
-}
-
-body.is-admin .avatar-admin {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 4px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(184, 109, 134, 0.25);
-}
-
-.avatar-token-input {
-  width: 100%;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(184, 109, 134, 0.35);
-  background: #faf6fb;
-  color: var(--text);
-  font: inherit;
-  font-size: 0.85rem;
-}
-
-.avatar-admin-buttons {
-  display: flex;
-  gap: 6px;
-}
-
-.avatar-admin-buttons .avatar-action {
-  padding: 8px 10px;
-  font-size: 0.82rem;
-}
-
-.avatar-admin-note {
-  margin: 0;
-  font-size: 0.78rem;
-  color: var(--muted);
-  text-align: center;
-  min-height: 1em;
 }
 
 .page-nav a {

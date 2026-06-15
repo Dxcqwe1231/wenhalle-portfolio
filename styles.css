@@ -219,6 +219,10 @@ main {
   box-shadow: 0 28px 70px rgba(49, 47, 52, 0.16);
   padding: 28px 28px 20px;
   position: relative;
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .proposal-panel h3 {
@@ -793,6 +797,23 @@ p {
   }
   .welcome-avatar {
     margin-top: 0;
+  }
+  .proposal-modal {
+    padding: 16px;
+  }
+  .proposal-panel {
+    padding: 22px 20px 18px;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+  }
+  .proposal-panel p {
+    margin: 0 0 12px;
+  }
+  .proposal-form {
+    gap: 14px;
+  }
+  .proposal-form textarea {
+    min-height: 96px;
   }
 }
 
